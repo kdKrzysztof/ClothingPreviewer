@@ -1,0 +1,413 @@
+
+
+@keyframes move-twinkle-back {
+    from {background-position: 0 0;}
+    to {background-position: bottom 10000px left 10000px;}
+  }
+
+@keyframes loadingAnim {
+    from { transform: rotate(0deg);}
+    to  { transform: rotate(360deg) }
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.BVLogo{
+    display: flex;
+    width: 11rem;
+}
+
+.renderImage{
+    display: flex;
+    height: auto;
+    max-width: 25rem;
+    overflow: hidden;
+}
+
+.loadingAnim{
+    animation: loadingAnim 2000ms linear infinite;
+}
+
+.renderImageContainer{
+    display: flex;
+    width: 70%;
+    justify-content: center;
+}
+
+.background-content-image{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: transparent url(./assets/newbackground.png) repeat top center;
+    /* background-color: black; */
+    background-position: center;
+    background-size: 40%;
+    overflow: hidden;
+    animation: move-twinkle-back 3000s linear infinite;
+    opacity: 99%;
+}
+
+.twinkling{
+    position: absolute;
+    z-index: 1;
+    background: transparent url(./assets/twinkling.png) repeat top center;
+    background-size: 30%;
+    width: 90vw;
+    height: 80vh;
+    animation: move-twinkle-back 300s linear infinite;
+}
+
+.container{
+    width: 70%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    background-color: rgba(23, 23, 23, 1);
+    border-radius: 1rem;
+    z-index: 2;
+    box-shadow: 0 0 140px 1px #8367fe3f;
+}
+
+.uploadInputs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    min-height: 25rem;
+    height: auto;
+    background-color: rgba(15, 15, 15, 1);
+    color: white;
+}
+
+.uploadShirt{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    max-height: 25rem;
+    
+}
+
+.uploadPants{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    background-color: rgba(15, 15, 15, 1);
+    border-bottom: 1px solid #8267fe;
+    height: 3rem;
+    width: 100%;
+    margin-bottom: 1rem;
+
+    z-index: 2;
+}
+
+.button-design{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: rgb(10, 10, 10, 1);
+    width: 30%;
+    height: 2rem;
+    border-radius: 3px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background-color: #695bf0;
+    font-family: sans-serif;
+    font-size: 1rem;
+    box-shadow: 0 0 0px 0px #3c3391;
+    transition: box-shadow 200ms;
+}
+
+.button-design:hover{
+    background-color: #3c3391;
+    box-shadow: 0 0 10px 1px #5649ca3b;
+    transition: box-shadow 200ms;
+}
+
+#spacebetweenbuttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: .2rem;
+    height: 1.5rem;
+    background-color: #574aca;
+    border-top: 2.5px solid #574aca;
+    border-bottom: 2.5px solid #574aca;
+}
+
+.selectButton{
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: 0;
+    font-family: sans-serif;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.uploadInputsContainerBefore{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 70%;
+    min-height: 15rem;
+    padding: 1rem;
+    border: 1px dashed white;
+    transition: border 200ms;
+}
+
+.uploadInputsContainerAfter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 70%;
+    min-height: 15rem;
+    padding: 1rem;
+    border: 1px dashed #574aca;
+    transition: border 200ms;
+}
+
+.uploadFileImage{
+    display: flex;
+    width: 40%;
+    height: 65%;
+    height: auto;
+    filter: invert(100%);
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    pointer-events: none
+}
+
+#uploadInputsContainer > p{
+    pointer-events: none;
+}
+
+#upload{
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.buttonsContainer{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    height: auto;
+    width: 100%;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 3rem;
+    background-color: rgba(2, 2, 2, 0.623);
+}
+
+.emptySpace{
+    display: flex;
+    width: 70%;
+    height:auto;
+}
+
+.footer{
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items: center;
+    width: 100%;
+    height: 3rem;
+    overflow: hidden;
+    background-color: rgba(15, 15, 15, 1);
+    border-top: 1px solid #8267fe;
+}
+
+.footer > p {
+    display: flex;
+    font-size: .85rem;
+    text-align: center;
+    font-family: sans-serif;
+    opacity: 50%;
+}
+
+.footer > img {
+    display: flex;
+    height: auto;
+    width: 7rem;
+    margin-bottom: .25rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+@media (max-width: 1050px) {
+    .selectButton{
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 780px){
+    .selectButton{
+        font-size: 0.6rem;
+    }
+} 
+
+@media (max-width: 640px){
+    .selectButton{
+        font-size: 0.5rem;
+    }
+}
+
+@media (max-width: 550px) {
+    .container{
+        width: 70%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+        background-color: rgba(23, 23, 23, 1);
+        border-radius: 1rem;
+        z-index: 2;
+        box-shadow: 0 0 140px 1px #8367fe3f;
+    }
+    
+    .uploadShirt{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        max-height: 25rem;
+    }
+
+    .uploadInputs{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        min-height: 10rem;
+        height: auto;
+        background-color: rgba(15, 15, 15, 1);
+        color: white;
+    }
+
+    .uploadInputsContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 70%;
+        min-height: 5rem;
+        max-height: 6.5rem;
+        padding: 1rem;
+        border: 1px dashed white;
+    }
+
+    .uploadInputsContainerBefore{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 70%;
+        min-height: 5rem;
+        max-height: 6.5rem;
+        padding: 1rem;
+        border: 1px dashed white;
+        transition: border 200ms;
+    }
+    
+    .uploadInputsContainerAfter{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 5rem;
+        max-height: 6.5rem;
+        padding: 1rem;
+        border: 1px dashed #574aca;
+        transition: border 200ms;
+    }
+
+    .uploadFileImage{
+        display: flex;
+        width: 25%;
+        height: auto;
+        filter: invert(100%);
+        -webkit-user-drag: none;
+        -khtml-user-drag: none;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+    }
+
+    .renderImage{
+        display: flex;
+        height: auto;
+        max-height: 90%;
+        max-width: 25rem;
+        overflow: hidden;
+    }
+    
+    .emptySpace{
+        width: 0%
+    }
+
+    .buttons{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(2, 2, 2, 0.623);
+    }
+
+    .selectButton{
+        font-size: 0.8rem;
+    }
+}
