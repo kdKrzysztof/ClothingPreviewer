@@ -17,7 +17,7 @@ image_file_shirt = os.getenv('shirt') # doesnt work lol
 # image_file_pants = os.getenv('pants') # doesnt work or im just stupid
 
 if not image_file_shirt:
-	image_file_shirt= backendFolder+"\\receivedFiles\\shirtToRender.png"
+	image_file_shirt= backendFolder+"\\receivedFiles\\shirtsToRender.png"
 
 shirt_obj="Shirt" # MAKE SURE TO SELECT SHIRT OBJECT NAME [Scene collection > Collection > bv model]
 shirt_material="shirt" # ALSO MAKE SURE TO SELECT THE MODEL OBJECT MATERIAL NAME

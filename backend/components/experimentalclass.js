@@ -5,28 +5,32 @@ import path from 'path';
 import 'dotenv/config';
 const execAsync = promisify(exec);
 
-class render {
-    constructor(type, receivedFile) {
+class Render {
+    constructor(type, receivedFile, req, resp, currentFileID, IDToDelete) {
         this.type = type;
-        this.receivedFile = receivedFile;
+        this.receivedFiles = receivedFile;
+        this.req = req;
+        this.resp = resp;
+        this.currentFileID = currentFileID;
+        this.IDToDelete = IDToDelete;
     }
 
-    static async method(req, resp){
+    async start(){
         const parentFolder = path.resolve(path.dirname(''));
         const blenderModelDirectory = `${parentFolder}\\blenderFiles\\project.blend`;
         const pythonDirectory_RenderScript = `${parentFolder}\\${'render' + this.type + '.py'}`;
-        const renderFolder = `${parentFolder}\\public\\${this.type + 's'}`;
+        const renderFolder = `${parentFolder}\\public\\${this.type}`;
 
         // eslint-disable-next-line no-undef
         const host = process.env.HOST;
     
         if (this.receivedFiles?.data == null) {
-            resp.status(400).json(`${host}/error/notexture.png`);
+            this.resp.status(400).json(`${host}/error/notexture.png`);
             return;
         }
     
         if (this.receivedFiles?.mimetype !== 'image/jpeg' && this.receivedFiles?.mimetype !== 'image/png' ) {
-            resp.status(400).json(`${host}/error/noimage.png`);
+            this.resp.status(400).json(`${host}/error/noimage.png`);
             return;
         }
     
@@ -39,19 +43,19 @@ class render {
         });
         
         try {
-            await execAsync(`blender -b ${blenderModelDirectory} --python ${pythonDirectory_RenderScript} -o "${renderFolder}\\${currentShirtFileID}#" -F PNG -f 1`);
+            await execAsync(`blender -b ${blenderModelDirectory} --python ${pythonDirectory_RenderScript} -o "${renderFolder}\\${this.currentFileID}#" -F PNG -f 1`);
         } catch(err) {
             console.log(err);
         }
         
-        resp.status(200).json(`${host}/${this.type + 's'}/${currentShirtFileID}1.png`);
+        this.resp.status(200).json(`${host}/${this.type}/${this.currentFileID}1.png`);
     
         try {
-            fs.rmSync(`${renderFolder}\\${shirtIDToDelete}1.png`);
+            fs.rmSync(`${renderFolder}\\${this.IDToDelete}1.png`);
         } catch (err) {
             return;
         }
     }
 }
 
-export default render;
+export default Render;
