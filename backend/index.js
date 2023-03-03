@@ -13,13 +13,15 @@ const publicFolder = `${parentFolder}\\public`; //basically select the public fo
 const shirtsFolder = `${publicFolder}\\shirts`;
 const pantsFolder = `${publicFolder}\\pants`;
 
-fs.readdirSync(shirtsFolder).forEach(file => {
-    fs.rmSync(`${shirtsFolder}\\${file}`);
-});
-
-fs.readdirSync(pantsFolder).forEach(file => {
-    fs.rmSync(`${pantsFolder}\\${file}`);
-});
+setInterval(() => {
+    fs.readdirSync(shirtsFolder).forEach(file => {
+        fs.rmSync(`${shirtsFolder}\\${file}`);
+    });
+    
+    fs.readdirSync(pantsFolder).forEach(file => {
+        fs.rmSync(`${pantsFolder}\\${file}`);
+    });
+}, 3600000);
 
 const app = express();
 
@@ -28,26 +30,43 @@ app.use('/shirts', express.static('public/shirts'));  // these are backend folde
 app.use('/pants', express.static('public/pants'));
 app.use('/error', express.static('errors'));
 
-let currentShirtFileID = 10;
-let shirtIDToDelete = 0;
+
 app.post('/renderShirt', fileUpload(), async (req, resp) => {
-    currentShirtFileID++;
-    shirtIDToDelete++;
-    // await renderShirt(req, resp);
     const receivedFiles = req.files?.shirtTexture;
-    let render = new Render('Shirts', receivedFiles, req, resp, currentShirtFileID, shirtIDToDelete);
-    render.start();
+
+    if (receivedFiles?.data == null) {
+        resp.status(400).json(`${process.env.HOST}/error/notexture.png`);
+        return;
+    }
+
+    if (receivedFiles?.mimetype !== 'image/jpeg' && receivedFiles?.mimetype !== 'image/png' ) {
+        resp.status(400).json(`${process.env.HOST}/error/noimage.png`);
+        return;
+    }
+
+    let render = new Render;
+    let result = await render.renderShirt(receivedFiles);
+    resp.status(200).json(result);
 });
 
-let currentPantsFileID = 10;
-let pantsIDToDelete = 0;
+
 app.post('/renderPants', fileUpload(), async (req, resp) => {
-    currentPantsFileID++;
-    pantsIDToDelete++;
-    // await renderPants(req, resp);
     const receivedFiles = req.files?.pantsTexture;
-    let render = new Render('Pants', receivedFiles, req, resp, currentPantsFileID, pantsIDToDelete);
-    render.start();
+
+    if (receivedFiles?.data == null) {
+        resp.status(400).json(`${process.env.HOST}/error/notexture.png`);
+        return;
+    }
+
+    if (receivedFiles?.mimetype !== 'image/jpeg' && receivedFiles?.mimetype !== 'image/png' ) {
+        resp.status(400).json(`${process.env.HOST}/error/noimage.png`);
+        return;
+    }
+
+    let render = new Render;
+    let result = await render.renderPants(receivedFiles);
+
+    resp.status(200).json(result);
 });
 
 app.listen(7000, () => {
