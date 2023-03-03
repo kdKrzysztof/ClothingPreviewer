@@ -34,10 +34,18 @@ const renderPants = async (req, resp) => {
     }
     
     fs.writeFile('./receivedFiles/pantsToRender.png', receivedFiles.data, (err) => {
-        console.log(err);
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('file written successfully');
+        }
     });
 
-    await execAsync(`blender -b ${blenderModelDirectory} --python ${pythonDirectory_PantsRender} -o "${pantsFolder}\\${currentPantsFileID}#" -F PNG -f 1`);
+    try {
+        await execAsync(`blender -b ${blenderModelDirectory} --python ${pythonDirectory_PantsRender} -o "${pantsFolder}\\${currentPantsFileID}#" -F PNG -f 1`);
+    } catch(err) {
+        console.log(err);
+    }
     
     console.log('Pants render created');
     resp.status(200).json(`${host}/pants/${currentPantsFileID}1.png`);
