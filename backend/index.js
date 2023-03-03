@@ -1,5 +1,4 @@
 import express, { json } from 'express';
-import cors from 'cors';
 import fileUpload from 'express-fileupload';
 import fs from 'fs';
 import path from 'path';
@@ -23,7 +22,6 @@ fs.readdirSync(pantsFolder).forEach(file => {
 const app = express();
 
 app.use(json());
-app.use(cors());
 app.use('/shirts', express.static('public/shirts'));  // these are backend folders that hold data like renders, assets, sent data etc. Don't change them unless you know how to.
 app.use('/pants', express.static('public/pants'));
 app.use('/error', express.static('errors'));
