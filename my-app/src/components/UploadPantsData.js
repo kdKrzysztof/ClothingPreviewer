@@ -45,7 +45,7 @@ const UploadData = () => {
           setPants(loadingIcon)
           setClassRender("renderImageContainer loadingAnim")
         
-          const respPants = await fetch('/renderPants', {
+          const respPants = await fetch('/api/renderPants', {
             method: "POST",
             headers: {
               pragma: "no-cache",

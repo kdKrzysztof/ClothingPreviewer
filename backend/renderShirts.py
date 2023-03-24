@@ -13,11 +13,12 @@ import os
 cwd = os.getcwd()
 backendFolder = os.path.dirname(cwd)
 
-image_file_shirt = os.getenv('shirt') # doesnt work lol
-# image_file_pants = os.getenv('pants') # doesnt work or im just stupid
+image_file_shirt = os.getenv('shirt') # doesnt work
 
+# if not image_file_shirt:
+#	 image_file_shirt= backendFolder+"/receivedFiles/shirtsToRender.png"
 if not image_file_shirt:
-	image_file_shirt= backendFolder+"\\receivedFiles\\shirtsToRender.png"
+	image_file_shirt = "/usr/src/app/receivedFiles/shirtsToRender.png"
 
 shirt_obj="Shirt" # MAKE SURE TO SELECT SHIRT OBJECT NAME [Scene collection > Collection > bv model]
 shirt_material="shirt" # ALSO MAKE SURE TO SELECT THE MODEL OBJECT MATERIAL NAME

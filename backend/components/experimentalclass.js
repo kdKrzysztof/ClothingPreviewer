@@ -9,12 +9,13 @@ let fileID = 10;
 
 class Render {
     parentFolder = path.resolve(path.dirname(''));
-    blenderFileDirectory = `${this.parentFolder}\\blenderFiles\\project.blend`;
-
+    blenderFileDirectory = `${this.parentFolder}/blenderFiles/project.blend`;
     async _renderImage(blenderFile, texture, type){
         fileID++;
-        const pythonDirectory_RenderScript = `${this.parentFolder}\\${`render${type}.py`}`;
-        const renderFolder = `${this.parentFolder}\\public\\${type}`;
+        const pythonDirectory_RenderScript = `${this.parentFolder}/${`render${type}.py`}`;
+        console.log(this.parentFolder);
+        console.log(pythonDirectory_RenderScript);
+        const renderFolder = `${this.parentFolder}/public/${type}`;
 
         fs.writeFile(`./receivedFiles/${type}ToRender.png`, texture?.data, (err) => {
             if (err) {

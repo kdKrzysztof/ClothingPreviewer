@@ -1,0 +1,19 @@
+version: "1.1"
+services:
+  backend:
+    build:
+      context: './backend'
+      dockerfile: './Dockerfile'
+    volumes: 
+      - './:/usr/src/app/public'
+      - './:/usr/src/app/receivedFiles'
+    ports: 
+      - '7000:7000'
+  frontend:
+    build:
+      context: './my-app'
+      dockerfile: './Dockerfile'
+    ports: 
+      - '80:80'
+    links:
+      - 'backend'

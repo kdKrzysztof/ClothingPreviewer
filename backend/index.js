@@ -30,6 +30,10 @@ app.use('/shirts', express.static('public/shirts'));  // these are backend folde
 app.use('/pants', express.static('public/pants'));
 app.use('/error', express.static('errors'));
 
+app.get('/api/uwu', async (req, resp) => {
+    resp.status(200).json({uwu: 'owo'});
+    return;
+});
 
 app.post('/renderShirt', fileUpload(), async (req, resp) => {
     const receivedFiles = req.files?.shirtTexture;

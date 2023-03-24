@@ -13,11 +13,12 @@ import os
 cwd = os.getcwd()
 backendFolder = os.path.dirname(cwd)
 
-image_file_pants_directory = os.getenv('pants') # doesnt work lol
-# image_file_pants = os.getenv('pants') # doesnt work or im just stupid
+image_file_pants = os.getenv('pants') # doesnt work
 
-if not image_file_pants_directory:
-	image_file_pants_directory= backendFolder+"\\receivedFiles\\pantsToRender.png"
+# if not image_file_pants:
+#	image_file_pants = backendFolder+"/receivedFiles/pantsToRender.png"
+if not image_file_pants:
+	image_file_pants = "/usr/src/app/receivedFiles/pantsToRender.png"
 
 pants_obj="Pants" # MAKE SURE TO SELECT PANTS OBJECT NAME [Scene collection > Collection > bv model]
 pants_material = "pants" # ALSO MAKE SURE TO SELECT THE MODEL OBJECT MATERIAL NAME
@@ -30,9 +31,9 @@ bpy.ops.object.select_all(action = 'DESELECT')
 bpy.data.objects[pants_obj].select_set(True)
 bpy.context.view_layer.objects.active = bpy.data.objects[pants_obj]
 
-image_abs = bpy.path.abspath("//%s" % image_file_pants_directory)
+image_abs = bpy.path.abspath("//%s" % image_file_pants)
 
-image_name = os.path.split(image_file_pants_directory)[1]
+image_name = os.path.split(image_file_pants)[1]
 
 bImg = bpy.data.images.get(image_abs)
 if not bImg:
