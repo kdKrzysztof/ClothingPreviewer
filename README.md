@@ -24,15 +24,16 @@ There are two ways of running this project on your computer:
 	 ```
 	 docker compose up
 	 ```
-	 Running a project with this method automatically
+	 Opening an project via docker is fast and simple. It runs frontend and backend on virtual machine. No need to do the steps below.
 	  
  2. **Run front end and back end separately** 
 	Frontend:
 		- In my-app directory, you can run: ```
-		npm start
+		npm install
+		``` and then ```npm start
 		``` command. This starts the app front end in the development mode.
 	Backend:
-		- In this directory, you can run: ```node index.js``` to start backend server.
+		- In this directory, you can run: ```npm install``` and then ```node index.js``` to start backend server.
 
 #### By default, frontend runs on ports 80:80, you can open it by typing http://localhost/ in your browser. Backend runs on port 7000. 
 	
