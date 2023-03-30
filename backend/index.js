@@ -30,12 +30,7 @@ app.use('/shirts', express.static('public/shirts'));  // these are backend folde
 app.use('/pants', express.static('public/pants'));
 app.use('/error', express.static('errors'));
 
-app.get('/api/uwu', async (req, resp) => {
-    resp.status(200).json({uwu: 'owo'});
-    return;
-});
-
-app.post('/renderShirt', fileUpload(), async (req, resp) => {
+app.post('/api/renderShirt', fileUpload(), async (req, resp) => {
     const receivedFiles = req.files?.shirtTexture;
 
     if (receivedFiles?.data == null) {
@@ -54,7 +49,7 @@ app.post('/renderShirt', fileUpload(), async (req, resp) => {
 });
 
 
-app.post('/renderPants', fileUpload(), async (req, resp) => {
+app.post('/api/renderPants', fileUpload(), async (req, resp) => {
     const receivedFiles = req.files?.pantsTexture;
 
     if (receivedFiles?.data == null) {
@@ -73,6 +68,7 @@ app.post('/renderPants', fileUpload(), async (req, resp) => {
     resp.status(200).json(result);
 });
 
-app.listen(7000, () => {
-    console.log('app working - based');
+let port = 7000;
+app.listen(port, () => {
+    console.log(`app running on port: ${port}`);
 });

@@ -13,8 +13,6 @@ class Render {
     async _renderImage(blenderFile, texture, type){
         fileID++;
         const pythonDirectory_RenderScript = `${this.parentFolder}/${`render${type}.py`}`;
-        console.log(this.parentFolder);
-        console.log(pythonDirectory_RenderScript);
         const renderFolder = `${this.parentFolder}/public/${type}`;
 
         fs.writeFile(`./receivedFiles/${type}ToRender.png`, texture?.data, (err) => {

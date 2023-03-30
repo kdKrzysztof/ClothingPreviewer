@@ -26,20 +26,17 @@ const UploadData = () => {
         const dropbox = document.querySelector("#uploadInputsContainer")
         dropbox.className = "uploadInputsContainerBefore"
         const data = e.dataTransfer.files[0]
-        console.log(data)
         handleUpload(data)
     }
 
     const handleInput = async e => {
         const data = e.target.files[0]
-        console.log(data)
         handleUpload(data)
     }
 
 
     const handleUpload = async e => {
 
-        console.log(e)
         const formData = new FormData();
         formData.append("shirtTexture", e)
     
@@ -56,9 +53,9 @@ const UploadData = () => {
             },
             cache: "no-cache"
         })
-        .then(resp => resp.json());
-        
-        console.log("handling shirt Input")
+        .then(resp => resp.json())
+        .catch(e => console.log(e));
+
         setClassRender("renderImageContainer")
         setShirt(respShirt)
       }
