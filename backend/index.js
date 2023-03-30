@@ -6,7 +6,7 @@ import path from 'path';
 // import renderShirt from './components/renderShirt.js';
 // import renderPants from './components/renderPants.js';
 
-import Render from './components/experimentalclass.js';
+import Render from './components/renderClass.js';
 
 const parentFolder = path.resolve(path.dirname(''));
 const publicFolder = `${parentFolder}\\public`; //basically select the public folder directory - it holds rendered data
