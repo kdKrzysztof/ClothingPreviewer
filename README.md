@@ -35,6 +35,9 @@ There are two ways of running this project on your computer:
 	Backend:
 		- In this directory, you can run: ```npm install``` and then ```node index.js``` to start backend server.
 
-#### By default, frontend runs on ports 80:80, you can open it by typing http://localhost/ in your browser. Backend runs on port 7000. 
-	
-		
+#### By default, frontend runs on port 80, you can open it by typing http://localhost/ in your browser. Backend runs on port 7000. 
+
+#### For non docker version, make sure you download blender's latest version. Please setup evironmental variable for blender, by going into:
+```
+Evironmental variable ---> Click on "Path" inside "User variables" ---> Then click add/new and select blender.exe file from blender's directory
+```
