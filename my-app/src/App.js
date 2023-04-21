@@ -1,12 +1,12 @@
 import './App.css';
-import React from 'react';
+import {useState} from 'react';
 import UploadShirtData from './components/UploadShirtData';
 import UploadPantsData from './components/UploadPantsData';
 import buildaverseLogo from './assets/light_long.png';
 import BVTradeLogo from './assets/BVTradet-banner-transparent.png';
 
 function App() {
-  const [comp, setComp] = React.useState(false);
+  const [comp, setComp] = useState(false);
 
   return (
     <div className="App">
