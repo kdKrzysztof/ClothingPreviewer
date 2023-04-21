@@ -1,13 +1,12 @@
 import './App.css';
-import React from 'react'
-import UploadShirtData from './components/UploadShirtData'
-import UploadPantsData from './components/UploadPantsData'
-import buildaverseLogo from './assets/light_long.png'
-import BVTradeLogo from './assets/BVTradet-banner-transparent.png'
+import React from 'react';
+import UploadShirtData from './components/UploadShirtData';
+import UploadPantsData from './components/UploadPantsData';
+import buildaverseLogo from './assets/light_long.png';
+import BVTradeLogo from './assets/BVTradet-banner-transparent.png';
 
 function App() {
-
-  const [comp, setComp] = React.useState(false)
+  const [comp, setComp] = React.useState(false);
 
   return (
     <div className="App">
@@ -21,22 +20,36 @@ function App() {
             <div className="buttonsContainer">
               <div className="buttons">
                 <div className="button-design">
-                  <button className="selectButton" onClick={() => {setComp(false)}}>SHIRT</button>
+                  <button
+                    className="selectButton"
+                    onClick={() => {
+                      setComp(false);
+                    }}
+                  >
+                    SHIRT
+                  </button>
                 </div>
                 <div className="button-design">
-                  <button className="selectButton" onClick={() => {setComp(true)}}>PANTS</button>
+                  <button
+                    className="selectButton"
+                    onClick={() => {
+                      setComp(true);
+                    }}
+                  >
+                    PANTS
+                  </button>
                 </div>
               </div>
               <div className="emptySpace"></div>
             </div>
-            { comp ? <UploadPantsData/> : <UploadShirtData/>}
+            {comp ? <UploadPantsData /> : <UploadShirtData />}
           </div>
-          <div className="footer">   
+          <div className="footer">
             <p>Provided by:</p>
             <img src={BVTradeLogo} alt=""></img>
             <p>Krzysiek#5558</p>
           </div>
-        </div>  
+        </div>
       </div>
     </div>
   );
