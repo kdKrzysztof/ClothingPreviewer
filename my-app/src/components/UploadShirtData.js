@@ -37,7 +37,6 @@ const UploadData = () => {
     const formData = new FormData();
     formData.append('shirtTexture', e);
 
-    // const renderImgContent = document.querySelector("#renderImg")
     setShirt(loadingIcon);
     setClassRender('renderImageContainer loadingAnim');
 
