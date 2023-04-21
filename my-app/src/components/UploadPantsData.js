@@ -1,34 +1,34 @@
-import React from 'react';
+import { useRef, useState } from 'react';
 import PantsRender from './PantsRender';
 import templatePants from '../assets/templatePants.png';
 import uploadImg from '../assets/dropfile.png';
 import loadingIcon from '../assets/loading-icon.png';
 
 const UploadData = () => {
-  const [pants, setPants] = React.useState(templatePants);
-  const [classRender, setClassRender] = React.useState('renderImageContainer');
+  const [pants, setPants] = useState(templatePants);
+  const [classRender, setClassRender] = useState('renderImageContainer');
+  // eslint-disable-next-line no-unused-vars
+  const [dropboxClass, setDropboxClass] = useState('uploadInputsContainerBefore');
+  const uploadInput = useRef(null);
 
   const handleDragLeave = (e) => {
     e.preventDefault();
-    const dropbox = document.querySelector('#uploadInputsContainer');
-    dropbox.className = 'uploadInputsContainerBefore';
+    setDropboxClass('uploadInputsContainerBefore');
   };
 
   const handleDragEnter = (e) => {
     e.preventDefault();
-    const dropbox = document.querySelector('#uploadInputsContainer');
-    dropbox.className = 'uploadInputsContainerAfter';
+    setDropboxClass('uploadInputsContainerAfter');
   };
 
   const handleDrop = async (e) => {
     e.preventDefault();
-    const dropbox = document.querySelector('#uploadInputsContainer');
-    dropbox.className = 'uploadInputsContainerBefore';
+    setDropboxClass('uploadInputsContainerBefore');
     const data = e.dataTransfer.files[0];
     handleUpload(data);
   };
 
-  const handleInput = async (e) => {
+  const handleInput = (e) => {
     const data = e.target.files[0];
     handleUpload(data);
   };
@@ -48,9 +48,7 @@ const UploadData = () => {
       },
       body: formData,
       cache: 'no-cache'
-    })
-      .then((resp) => resp.json())
-      .catch((e) => console.log(e));
+    });
 
     setClassRender('renderImageContainer');
     setPants(respPants);
@@ -69,11 +67,16 @@ const UploadData = () => {
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
           onClick={() => {
-            const input = document.querySelector('#upload');
-            input.click();
+            uploadInput?.current.click();
           }}
         >
-          <input type="file" name="shirtTexture" id="upload" onChange={handleInput}></input>
+          <input
+            ref={uploadInput}
+            type="file"
+            name="shirtTexture"
+            id="upload"
+            onChange={handleInput}
+          ></input>
           <img src={uploadImg} alt="" className="uploadFileImage noselect"></img>
           <p className="noselect">Click or drop file to upload shirt texture</p>
         </div>
