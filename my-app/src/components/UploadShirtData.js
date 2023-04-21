@@ -1,5 +1,4 @@
 import { useRef, useState } from 'react';
-import ShirtRender from './shirtRender';
 import templateShirt from '../assets/templateShirt.png';
 import uploadImg from '../assets/dropfile.png';
 import loadingIcon from '../assets/loading-icon.png';
@@ -85,7 +84,7 @@ const UploadData = () => {
         </div>
       </div>
       <div className={classRender}>
-        <ShirtRender shirt={shirt} />
+        <img src={shirt} alt="" className="renderImage"></img>
       </div>
     </div>
   );
