@@ -40,7 +40,7 @@ const UploadData = () => {
     setPants(loadingIcon);
     setClassRender('renderImageContainer loadingAnim');
 
-    const respPants = await fetch('/api/renderPants', {
+    await fetch('/api/renderPants', {
       method: 'POST',
       headers: {
         pragma: 'no-cache',
@@ -48,10 +48,13 @@ const UploadData = () => {
       },
       body: formData,
       cache: 'no-cache'
-    });
-
-    setClassRender('renderImageContainer');
-    setPants(respPants);
+    })
+      .then((resp) => resp.json())
+      .then((respPants) => {
+        setClassRender('renderImageContainer');
+        setPants(respPants);
+      })
+      .catch((e) => console.log(e));
   };
 
   return (

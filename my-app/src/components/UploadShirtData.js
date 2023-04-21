@@ -41,7 +41,7 @@ const UploadData = () => {
     setShirt(loadingIcon);
     setClassRender('renderImageContainer loadingAnim');
 
-    const respShirt = await fetch('/api/renderShirt', {
+    await fetch('/api/renderShirt', {
       method: 'POST',
       body: formData,
       headers: {
@@ -49,10 +49,13 @@ const UploadData = () => {
         'cache-control': 'no-cache'
       },
       cache: 'no-cache'
-    });
-
-    setClassRender('renderImageContainer');
-    setShirt(respShirt);
+    })
+      .then((resp) => resp.json())
+      .then((respShirt) => {
+        setClassRender('renderImageContainer');
+        setShirt(respShirt);
+      })
+      .catch((e) => console.log(e));
   };
 
   return (
